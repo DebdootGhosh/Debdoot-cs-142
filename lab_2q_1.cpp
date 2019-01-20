@@ -18,7 +18,7 @@ class node{
 class dll{
 // head and nodes 
   public:
- // node type pointer head and tail
+ // node type pointer head 
   node* head;
 
   
