@@ -233,27 +233,46 @@ class stackll{
  queuell q1,q2;
  void push(int x){
       q1.enqueue(x);
-          }
- void pop(){
-      int x;y;
+         }
+void pop(){
+      int n=q1.size();
+      int i;
       if(q1.isempty()==true){
        cout<<"stack is empty"<<endl;
              }
       else{
-       while(q1.front=q1.rear-1){
-        x=q1.dequeue();
-        q2.enqueue(x);
+       while(i<n-1){
+        q1.dequeue();
+        q1.enqueue(q1.front->data);
            }
-        q1.dequeue;
-       while(q2.front=q2.rear){
-         x=q2.dequeue();
-         q1.enqueue(x);
-          }
+        q1.dequeue();
         }
       }
   void display(){
       q1.display();
        }
+  int size(){
+      q1.size();
+        }
+  bool isempty(){
+       q1.isemp();
+         }
+  int topdisplay(){  
+    int n=q1.size();
+      int i;
+      if(q1.isempty()==true){
+       cout<<"stack is empty"<<endl;
+             }
+      else{
+       while(i<n-1){
+       
+        q1.enqueue(q1.front->data);
+        q1.dequeue();
+           }
+        q1.frontdisplay();
+    //cout<<"top is:"<<x<<endl;
+        }
+      }
    };
 int main(){
     stackll s1;
@@ -263,8 +282,11 @@ int main(){
     s1.display();
     s1.pop();
     s1.display();
+    s1.size();
+    s1.topdisplay();
+    s1.isempty();
     return 0;
-       }
+      }
    
  
  
