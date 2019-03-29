@@ -97,40 +97,26 @@
 	//cout<<"countnode is:"<<n<<endl;
 	return n;*/
         }
-    void rangesearch(node *curr, int k1, int k2)  
-   {  
-    /* base case */
-    if ( NULL == curr )  
-       // return 0;  
-      
-    /* Since the desired o/p is sorted,  
-        recurse for left subtree first  
-        If root->data is greater than k1,  
-        then only we can get o/p keys  
-        in left subtree */
-    if ( k1 < curr->data )  
-        rangesearch(curr->left, k1, k2);  
-       // return rangesearch(curr->left, k1, k2);
-    /* if root's data lies in range,  
-    then prints root's data */
-    if ( k1 <= curr->data && k2 >= curr->data )  
-        cout<<curr->data<<" ";  
-     // return 1 + rangesearch(curr->left, k1,k1) + 
-                    //rangesearch(root->right,k1, k2);
-    /* If root->data is smaller than k2, 
-        then only we can get o/p keys  
-        in right subtree */
-    if ( k2 > curr->data )  
-        rangesearch(curr->right, k1, k2);
-        //return rangesearch(curr->right, k1, k2);
-  
-    // Special Optional case for improving efficiency 
-   // if (curr->data == k2 && curr->data == k1) 
-      //  return 1;    
-    }
-    void rangesearch2(int k1,int k2)  {
-    rangesearch(root,k1,k2);
-        }
+  int rangeSearch(node*current,int k1,int k2){
+			if (current==NULL) return 0;
+			if (current->data == k2 && current->data == k1){
+				cout<<current->data<<","<<endl;
+				return 1;
+			}
+			if (current->data <= k2 && current->data >= k1){
+				//print the data
+				cout<<current->data<<",";
+				//count the nodes
+				return 1 + rangeSearch(current->left, k1, k2) + rangeSearch(current->right, k1, k2);
+			}
+			else if (current->data < k2){
+				return rangeSearch(current->right, k1, k2);
+			}
+			else {
+				cout<<endl;
+				return rangeSearch(current->left, k1, k2);
+			}
+}
     int height(node* curr)  
   {  
     if (curr == NULL)  
@@ -164,7 +150,7 @@
     cout<<"countnode is:"<< bst1.CountNodes(bst1.root)<<endl;
     cout<<"countnode is:"<< bst1.CountNodes(bst1.root)<<endl;
     bst1.rangesearch2(2,7);
-   // cout<<" number of nodes between the range is:"<<bst1.rangesearch2(2,7)<<endl;
+    cout<<"number of nodes between these two nodes are"<<bst1.rangeSearch(bst1.root,k1,k2)<<endl;
     cout<<"height of the bst is :"<<bst1.height(bst1.root)<<endl;
      cout<<"height of the bst is :"<<bst1.height(bst1.root)<<endl;
     return 0;
